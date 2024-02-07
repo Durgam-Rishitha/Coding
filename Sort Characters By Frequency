@@ -1,0 +1,11 @@
+from collections import Counter
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        hm = Counter(s)
+        heap = [(-v,k) for k,v in hm.items()]
+        heapq.heapify(heap)
+        ans = ''
+        while(heap):
+            v,k = heapq.heappop(heap)
+            ans += k*-v
+        return ans
