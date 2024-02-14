@@ -1,0 +1,22 @@
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+        l = []
+        l1 = []
+        l2 = []
+        for i in nums:
+            if(i > 0):
+                l.append(i)
+            else:
+                l1.append(i)
+        n = min(len(l),len(l1))
+        m = max(len(l),len(l1))
+        for i in range(n):
+            l2.append(l[i])
+            l2.append(l1[i])
+        if(len(l1) == m):
+            for j in range(n,m):
+                l2.append(l1[j])
+        elif(len(l) == m):
+            for j in range(n-1,m):
+                l2.append(l[j])
+        return l2
