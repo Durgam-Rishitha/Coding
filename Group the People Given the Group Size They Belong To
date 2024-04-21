@@ -1,0 +1,19 @@
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        hm = {}
+        for i in range(len(groupSizes)):
+            if(groupSizes[i] in hm):
+                hm[groupSizes[i]].append(i)
+            else:
+                hm[groupSizes[i]] = [i]
+        print(hm)
+        lans = []
+        for k,v in hm.items():
+            if(len(v) > k):
+                for i in range(0, len(v), k):
+                    l = v[i:i+k]
+                    lans.append(l)
+            else:
+                lans.append(v)
+        print(lans)
+        return lans
