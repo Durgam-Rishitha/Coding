@@ -1,0 +1,19 @@
+class Solution:
+    def findMatrix(self, nums: List[int]) -> List[List[int]]:
+        hm = {}
+        for i in nums:
+            if(i in hm):
+                hm[i] += 1
+            else:
+                hm[i] = 1
+        ans = []
+        a = []
+        while max(hm.values())>0:
+            for i in hm:
+                if hm[i]>=1:
+                    a.append(i)
+                    hm[i]-=1
+            ans.append(a)
+            a=[]
+        return ans
+            
