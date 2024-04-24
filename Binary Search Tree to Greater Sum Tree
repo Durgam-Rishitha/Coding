@@ -1,0 +1,19 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def bstToGst(self, root: TreeNode) -> TreeNode:
+        def inorder(node, total):
+            nonlocal greater_sum
+            if node:
+                inorder(node.right, total)
+                greater_sum += node.val
+                node.val = greater_sum
+                inorder(node.left, total)
+        
+        greater_sum = 0
+        inorder(root, 0)
+        return root
