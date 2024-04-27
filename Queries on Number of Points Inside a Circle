@@ -1,0 +1,14 @@
+import math
+class Solution:
+    def countPoints(self, points: List[List[int]], queries: List[List[int]]) -> List[int]:
+        def distance(x1,y1,x2,y2):
+            res = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+            return res
+        l = []
+        for i in queries:
+            c = 0
+            for j in points:
+                if(distance(i[0],i[1],j[0],j[1]) <= i[2]):
+                    c += 1
+            l.append(c)
+        return l
