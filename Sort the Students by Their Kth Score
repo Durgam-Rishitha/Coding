@@ -1,0 +1,16 @@
+class Solution:
+    def sortTheStudents(self, score: List[List[int]], k: int) -> List[List[int]]:
+        m = len(score)
+        n = len(score[0])
+        hm = {}
+        l = [score[i][k] for i in range(m)]
+        for i in range(len(l)):
+            hm[l[i]] = i
+        l.sort(reverse = True)
+        sorted_dict = {i: hm[i] for i in l}
+        print(sorted_dict)
+        ans = []
+        for k,v in sorted_dict.items():
+            ans.append(score[v])
+        return ans
+        
